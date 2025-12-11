@@ -813,8 +813,15 @@
             }
         });
 
+        // ID único de tu contador
+  const contadorID = "mi-sitio-github";
+
+  // Incrementa visitas
+  fetch(`https://api.countify.xyz/increment/${contadorID}`);
+
         // Initialize back to top button
         document.querySelector('.back-to-top').style.display = 'none';
     </script>
 </body>
 </html>
+
