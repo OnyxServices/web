@@ -813,15 +813,18 @@
             }
         });
 
-        // ID único de tu contador
-  const contadorID = "mi-sitio-github";
-
-  // Incrementa visitas
-  fetch(`https://api.countify.xyz/increment/${contadorID}`);
-
         // Initialize back to top button
         document.querySelector('.back-to-top').style.display = 'none';
     </script>
+    <script>
+  // ID único de tu sitio principal
+  const contadorID = "mi-sitio-github"; // Cambia por algo único
+
+  // Incrementa el contador cada vez que alguien visita tu sitio
+  fetch(`https://api.countify.xyz/increment/${contadorID}`)
+    .catch(err => console.error("Error incrementando visitas:", err));
+</script>
 </body>
 </html>
+
 
