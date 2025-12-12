@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyx - Soluciones Digitales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://iyem.yucatan.gob.mx/digitaliza/logo-digitaliza.png" type="image/png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DK4GM51GTY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DK4GM51GTY');
+</script>
+    <style>
+        :root {
+            --primary-dark: #0A0A0F;
+            --primary: #121826;
+            --secondary: #1D2433;
+            --accent: #4361EE;
+            --accent-light: #4CC9F0;
+            --light: #F8F9FA;
+            --medium: #94A3B8;
+            --success: #10B981;
+            --gradient: linear-gradient(135deg, #4361EE 0%, #4CC9F0 100%);
+            --gradient-dark: linear-gradient(135deg, #3A56D4 0%, #3FB4D9 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--light);
+            line-height: 1.7;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(10, 10, 15, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            background: var(--gradient);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--accent-light);
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(67, 97, 238, 0.4);
+            background: var(--gradient-dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, 
+                rgba(10, 10, 15, 0.95) 0%, 
+                rgba(18, 24, 38, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 200px 0 150px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(67, 97, 238, 0.15) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: var(--medium);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 150px 0;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        /* Carrusel de Servicios */
+        .carousel-container {
+            position: relative;
+            padding: 40px 0;
+            overflow: hidden;
+        }
+        
+        .services-carousel {
+            display: flex;
+            gap: 30px;
+            animation: slideLeft 150s linear infinite;
+            padding: 20px 0;
+        }
+        
+        .services-carousel:hover {
+            animation-play-state: paused;
+        }
+        
+        .service-card {
+            background: var(--secondary);
+            border-radius: 20px;
+            overflow: hidden;
+            flex: 0 0 380px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(67, 97, 238, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-card h3 i {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        
+        .service-card p {
+            color: var(--medium);
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Animación del carrusel */
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-380px * 5 - 30px * 5));
+            }
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 150px 0;
+            background: var(--primary-dark);
+            position: relative;
+        }
+        
+        .process::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 40px 25px;
+            background: var(--secondary);
+            border-radius: 20px;
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .step:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(67, 97, 238, 0.2);
+        }
+        
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 auto 25px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+        }
+        
+        .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .step p {
+            color: var(--medium);
+            font-size: 0.95rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 150px 0;
+            background: var(--primary);
+            position: relative;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        .contact-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact-details {
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            background: var(--gradient);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background: var(--secondary);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--light);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25D366;
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
+        
+        .whatsapp-text {
+            position: absolute;
+            right: 80px;
+            background: #25D366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+        
+        .whatsapp-button:hover .whatsapp-text {
+            opacity: 1;
+            right: 85px;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 120px;
+            right: 40px;
+            background: var(--gradient);
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+            z-index: 1000;
+            transition: all 0.4s;
+            opacity: 0;
+            visibility: hidden;
+            text-decoration: none;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(67, 97, 238, 0.6);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--medium);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-light);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--secondary);
+            border-radius: 12px;
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--medium);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .services-carousel {
+                animation-duration: 90s;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero {
+                padding: 180px 0 120px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .service-card {
+                flex: 0 0 320px;
+            }
+            
+            @keyframes slideLeft {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-320px * 5 - 30px * 5));
+                }
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .services, .process, .contact {
+                padding: 100px 0;
+            }
+            
+            .service-card {
+                flex: 0 0 280px;
+            }
+            
+            .whatsapp-button {
+                bottom: 25px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .back-to-top {
+                bottom: 100px;
+                right: 25px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 25px;
+            }
+            
+            .service-card {
+                flex: 0 0 85vw;
+            }
+            
+            .contact-form {
+                padding: 30px 25px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="logo-text">Onyx</div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="cta-button">
+                <i class="fas fa-rocket"></i> Comenzar
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <h1>Innovación Digital para Tu Negocio</h1>
+            <p>Desarrollamos soluciones web profesionales que transforman la experiencia digital de restaurantes, tiendas y emprendimientos. Combinamos diseño excepcional con tecnología de vanguardia.</p>
+            <a href="#servicios" class="cta-button">
+                <i class="fas fa-eye"></i> Explorar Servicios
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section con Carrusel -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2 class="section-title">Servicios Premium</h2>
+            <div class="carousel-container">
+                <div class="services-carousel">
+                    <!-- Tarjeta 1 -->
+                    <div class="service-card">
+                        <img src="https://static.tildacdn.com/tild3937-6435-4164-b238-666538313834/main-gif-video-2-9m.gif" alt="Menú Digital" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-utensils"></i> Menús Digitales</h3>
+                            <p>Diseñamos menús interactivos para restaurantes con actualización en tiempo real, categorización de productos y diseño atractivo que mejora la experiencia del cliente.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Estoy%20interesado%20en%20el%20servicio%20de%20Menús%20Digitales" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tarjeta 2 -->
+                    <div class="service-card">
+                        <img src="https://rinopixel.com/wp-content/uploads/2020/05/onlineshopping_rinopixel.gif" alt="Tienda Virtual" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-store"></i> Tiendas Virtuales</h3>
+                            <p>Desarrollamos e-commerce completos con carrito de compras, pasarelas de pago seguras, gestión de inventario y panel administrativo integrado.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Quiero%20más%20información%20sobre%20Tiendas%20Virtuales" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tarjeta 3 -->
+                    <div class="service-card">
+                        <img src="https://i.gifer.com/TwuB.gif" alt="Pedidos a Domicilio" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-motorcycle"></i> Pedidos a Domicilio</h3>
+                            <p>Sistemas de pedidos online con seguimiento en tiempo real, gestión de zonas de entrega, notificaciones automáticas y integración con delivery.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Necesito%20un%20sistema%20de%20Pedidos%20a%20Domicilio" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tarjeta 4 -->
+                    <div class="service-card">
+                        <img src="https://static.whata.app/contents/repository/picture_0592e51fb4a3cdd_2bfb6125abd880f283fd9faf232b4725a452bd2a.gif" alt="Catálogo Digital" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-book-open"></i> Catálogos Digitales</h3>
+                            <p>Catálogos interactivos con filtros avanzados, búsqueda inteligente, diseño responsive y administración de productos desde cualquier dispositivo.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Me%20interesa%20crear%20un%20Catálogo%20Digital" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 5 -->
+                    <div class="service-card">
+                        <img src="https://488390.fs1.hubspotusercontent-na1.net/hub/488390/hubfs/GIF%201.gif?width=2000&name=GIF%201.gif" alt="Landing Page" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-layer-group"></i> Landing Pages</h3>
+                            <p>Páginas de conversión optimizadas que transforman visitantes en clientes. Diseño estratégico enfocado en resultados y crecimiento empresarial.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Me%20interesa%20crear%20una%20Landing%20Page" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Repetir tarjetas para efecto continuo -->
+                    <div class="service-card">
+                        <img src="https://static.tildacdn.com/tild3937-6435-4164-b238-666538313834/main-gif-video-2-9m.gif" alt="Menú Digital" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-utensils"></i> Menús Digitales</h3>
+                            <p>Diseñamos menús interactivos para restaurantes con actualización en tiempo real, categorización de productos y diseño atractivo que mejora la experiencia del cliente.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Estoy%20interesado%20en%20el%20servicio%20de%20Menús%20Digitales" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <img src="https://rinopixel.com/wp-content/uploads/2020/05/onlineshopping_rinopixel.gif" alt="Tienda Virtual" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-store"></i> Tiendas Virtuales</h3>
+                            <p>Desarrollamos e-commerce completos con carrito de compras, pasarelas de pago seguras, gestión de inventario y panel administrativo integrado.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Quiero%20más%20información%20sobre%20Tiendas%20Virtuales" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <img src="https://i.gifer.com/TwuB.gif" alt="Pedidos a Domicilio" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-motorcycle"></i> Pedidos a Domicilio</h3>
+                            <p>Sistemas de pedidos online con seguimiento en tiempo real, gestión de zonas de entrega, notificaciones automáticas y integración con delivery.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Necesito%20un%20sistema%20de%20Pedidos%20a%20Domicilio" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <img src="https://static.whata.app/contents/repository/picture_0592e51fb4a3cdd_2bfb6125abd880f283fd9faf232b4725a452bd2a.gif" alt="Catálogo Digital" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-book-open"></i> Catálogos Digitales</h3>
+                            <p>Catálogos interactivos con filtros avanzados, búsqueda inteligente, diseño responsive y administración de productos desde cualquier dispositivo.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Me%20interesa%20crear%20un%20Catálogo%20Digital" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <img src="https://488390.fs1.hubspotusercontent-na1.net/hub/488390/hubfs/GIF%201.gif?width=2000&name=GIF%201.gif" alt="Landing Page" class="service-image">
+                        <div class="service-content">
+                            <h3><i class="fas fa-layer-group"></i> Landing Pages</h3>
+                            <p>Páginas de conversión optimizadas que transforman visitantes en clientes. Diseño estratégico enfocado en resultados y crecimiento empresarial.</p>
+                            <a href="https://wa.me/5353910527?text=¡Hola!%20Me%20interesa%20crear%20una%20Landing%20Page" class="cta-button">Consultar Ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="proceso">
+        <div class="container">
+            <h2 class="section-title">Nuestro Proceso</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Consulta Inicial</h3>
+                    <p>Analizamos tus necesidades, objetivos comerciales y definimos la estrategia digital adecuada para tu proyecto.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Diseño UX/UI</h3>
+                    <p>Creamos prototipos interactivos y diseños personalizados centrados en la experiencia del usuario.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Desarrollo</h3>
+                    <p>Implementamos todas las funcionalidades utilizando tecnologías modernas y mejores prácticas.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h3>Entrega & Soporte</h3>
+                    <p>Lanzamos tu solución con capacitación completa y ofrecemos soporte continuo para garantizar el éxito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Comienza Tu Transformación Digital</h3>
+                    <p>Estamos listos para ayudarte a llevar tu negocio al siguiente nivel con soluciones digitales personalizadas y efectivas.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Ubicación</h4>
+                                <p>Martí Alta - Calle 7ma, San Luis, Santiago de Cuba</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>+53 53910527</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Horario</h4>
+                                <p>Lunes - Viernes: 9:00 AM - 6:00 PM</p>
+                                <p style="margin-top: 5px; font-size: 0.9rem; color: var(--medium);">Soporte disponible 24/7 para clientes</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px;">
+                        <a href="https://wa.me/5353910527?text=¡Hola!%20Quiero%20más%20información%20sobre%20sus%20servicios" class="cta-button">
+                            <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 30px; font-size: 1.8rem;">Envía un Mensaje</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre Completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Correo Electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono (Opcional)">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="logo-text">Onyx</div>
+                    </div>
+                    <p style="color: var(--medium); margin-bottom: 25px;">Soluciones web profesionales para restaurantes, tiendas y pequeños negocios que buscan destacar en el mundo digital.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/Ottog92" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/ottog92?igsh=eXQ5OWUyb2g2eG0=" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/OtonielG92?t=MFVxg8hP-2ug4w77yIthjw&s=09" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Demostraciones</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://serverapolo.ddns.net/menu/"><i class="fas fa-external-link-alt"></i> Menús Digitales</a></li>
+                        <li><a href="https://serverapolo.ddns.net/tienda/"><i class="fas fa-external-link-alt"></i> Tiendas Virtuales</a></li>
+                        <li><a href="https://otoweb.github.io/pizza/"><i class="fas fa-external-link-alt"></i> Pedidos a Domicilio</a></li>
+                        <li><a href="https://serverapolo.ddns.net/catalogo/"><i class="fas fa-external-link-alt"></i> Catálogos Digitales</a></li>
+                        <li><a href="https://serverapolo.ddns.net/Landing/"><i class="fas fa-external-link-alt"></i> Landing Page</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                        <li><a href="#servicios"><i class="fas fa-chevron-right"></i> Servicios</a></li>
+                        <li><a href="#proceso"><i class="fas fa-chevron-right"></i> Proceso</a></li>
+                        <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-file-alt"></i> Casos de Estudio</a></li>
+                        <li><a href="#"><i class="fas fa-blog"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-shield-alt"></i> Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Onyx Digital Solutions. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+  
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5353910527?text=¡Hola!%20Estoy%20interesado%20en%20sus%20servicios" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">¿Necesitas ayuda?</span>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#inicio" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Back to top button visibility
+        window.addEventListener('scroll', function() {
+            const backButton = document.querySelector('.back-to-top');
+            if (window.scrollY > 500) {
+                backButton.classList.add('visible');
+            } else {
+                backButton.classList.remove('visible');
+            }
+            
+            // Header shadow on scroll
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const phone = '5353910527';
+            const message = `¡Hola! Soy ${formData.get('name')} (${formData.get('email')}). ${formData.get('message')}`;
+            const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Duplicar tarjetas para carrusel infinito
+        function duplicateCarouselItems() {
+            const carousel = document.querySelector('.services-carousel');
+            const items = carousel.querySelectorAll('.service-card');
+            
+            // Ya tenemos duplicados en el HTML, solo aseguramos que se mantengan
+            // Esto es para asegurar que si hay cambios dinámicos, se mantenga el efecto
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            duplicateCarouselItems();
+            
+            // Contador de visitas
+            const contadorID = "onyx-digital-solutions";
+            fetch(`https://api.countify.xyz/increment/${contadorID}`)
+                .catch(err => console.error("Error incrementando visitas:", err));
+        });
+    </script>
+</body>
+</html>
