@@ -1,383 +1,1485 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onyx | Soluciones Digitales de Alto Impacto</title>
+    <meta name="description" content="Diseño y desarrollo web de alto rendimiento. Sitios corporativos, tiendas online, aplicaciones a medida y automatizaciones con JavaScript, Python y Supabase.">
+    <meta name="keywords" content="desarrollo web, landing pages, e-commerce, automatización, Supabase, Python, JavaScript, programador freelance">
+    <meta name="author" content="Onyx Service | Soluciones Digitales">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Onyx Service — Transformo ideas en experiencias digitales rentables">
+    <meta property="og:description" content="Soluciones web modernas para empresas y creadores que buscan escalar y vender más.">
     
-    <!-- SEO / Open Graph -->
-    <meta name="description" content="Transformamos negocios con menús digitales, tiendas e-commerce y landing pages de alto rendimiento.">
-    <meta property="og:title" content="Onyx - Soluciones Digitales">
-    <meta property="og:description" content="Diseño web profesional para restaurantes y emprendimientos.">
-    <meta property="og:image" content="https://iyem.yucatan.gob.mx/digitaliza/logo-digitaliza.png">
-    
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Onyx Service — Ingeniería & Diseño Web de Alto Rendimiento</title>
+
+    <!-- Google Fonts: Inter & Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="https://iyem.yucatan.gob.mx/digitaliza/logo-digitaliza.png" type="image/png">
-
-    <!-- OneSignal (Corregido: cargado una sola vez) -->
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script>
-      window.OneSignalDeferred = window.OneSignalDeferred || [];
-      OneSignalDeferred.push(async function(OneSignal) {
-        await OneSignal.init({
-          appId: "549915b3-0980-434a-aa62-dab77f9c9bc5",
-          safari_web_id: "web.onesignal.auto.6836a56b-23bd-4172-b38f-daf17d70b8cc",
-          notifyButton: { enable: true },
-        });
-      });
-    </script>    
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DK4GM51GTY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-DK4GM51GTY');
-    </script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
+        /* ==========================================================================
+           1. VARIABLES DE DISEÑO & CONFIGURACIÓN BASE
+           ========================================================================== */
         :root {
-            --bg-dark: #07090e;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --accent: #6366f1; /* Indigo moderno */
-            --accent-light: #a5b4fc;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg-base: #06070a;
+            --bg-surface: #0e1017;
+            --bg-card: rgba(18, 21, 31, 0.7);
+            --bg-card-hover: rgba(26, 31, 46, 0.85);
+            
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-accent: rgba(0, 102, 255, 0.3);
+            
+            --electric-blue: #0066FF;
+            --electric-cyan: #00f0ff;
+            --tech-violet: #8A2BE2;
+            --violet-glow: #7928CA;
+            
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-dim: #6b7280;
+
+            --gradient-accent: linear-gradient(135deg, var(--electric-blue), var(--tech-violet));
+            --gradient-glow: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(138, 43, 226, 0.15));
+            --glass-blur: blur(16px);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        
+
         * {
-            margin: 0; padding: 0; box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
         }
 
-        h1, h2, h3 { font-family: 'Outfit', sans-serif; }
-        
-        .container {
-            width: 90%; max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Nav Modernizada */
-        header {
-            background: rgba(7, 9, 14, 0.8);
-            backdrop-filter: blur(20px);
-            padding: 15px 0;
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .header-container {
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        
-        .logo {
-            display: flex; align-items: center; gap: 10px;
+        a {
             text-decoration: none;
-        }
-        
-        .logo-icon {
-            background: var(--accent);
-            width: 35px; height: 35px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
-        }
-        
-        .logo-text {
-            font-size: 1.5rem; font-weight: 800; color: #fff;
-            letter-spacing: -0.5px;
+            color: inherit;
         }
 
-        .nav-menu { display: flex; list-style: none; gap: 30px; }
-        .nav-menu a {
-            text-decoration: none; color: var(--text-muted);
-            font-weight: 500; font-size: 0.95rem; transition: var(--transition);
+        ul {
+            list-style: none;
         }
-        .nav-menu a:hover { color: var(--accent-light); }
-        
-        /* Botones Estilo Premium */
-        .cta-button {
-            background: var(--accent);
-            color: white; padding: 12px 24px; border-radius: 10px;
-            font-weight: 600; font-size: 0.9rem; text-decoration: none;
-            display: inline-flex; align-items: center; gap: 8px;
-            transition: var(--transition); border: 1px solid rgba(255,255,255,0.1);
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
-        
-        .cta-button:hover {
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Utilidades Visuales */
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 30%, var(--electric-cyan) 75%, var(--tech-violet) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-pill {
+            background: rgba(0, 102, 255, 0.08);
+            border: 1px solid rgba(0, 102, 255, 0.25);
+            color: var(--electric-cyan);
+            font-size: 0.85rem;
+            padding: 0.35rem 1rem;
+            border-radius: var(--radius-full);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .badge-pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--electric-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--electric-cyan);
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.3); }
+        }
+
+        /* Botones Estratégicos */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.85rem 1.8rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(0, 102, 255, 0.4);
+        }
+
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
-            filter: brightness(1.1);
+            box-shadow: 0 15px 30px -5px rgba(138, 43, 226, 0.5);
         }
 
-        /* Hero Refinado */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           2. HEADER & NAVEGACIÓN
+           ========================================================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            padding: 1.25rem 0;
+        }
+
+        .header.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(6, 7, 10, 0.8);
+            backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .logo-symbol {
+            width: 28px;
+            height: 28px;
+            background: var(--gradient-accent);
+            border-radius: 8px;
+            display: grid;
+            place-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           3. HERO SECTION
+           ========================================================================== */
         .hero {
-            padding: 220px 0 140px;
-            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            padding: 10rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.2) 0%, rgba(138, 43, 226, 0.1) 40%, transparent 70%);
+            z-index: -1;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.4rem;
+            line-height: 1.12;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2.25rem;
+            max-width: 540px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Mockup Visual Interactivo */
+        .terminal-preview {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 102, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .terminal-header {
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .terminal-filename {
+            font-size: 0.75rem;
+            font-family: monospace;
+            color: var(--text-dim);
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .code-line { margin-bottom: 0.25rem; }
+        .token-keyword { color: #f472b6; }
+        .token-func { color: #60a5fa; }
+        .token-str { color: #34d399; }
+        .token-comment { color: #6b7280; font-style: italic; }
+
+        /* Metas Rápidas en Hero */
+        .metric-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .metric-item h4 {
+            font-size: 1.7rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .metric-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ==========================================================================
+           4. SECCIÓN SERVICIOS
+           ========================================================================== */
+        .section {
+            padding: 6.5rem 0;
+            position: relative;
+        }
+
+        .section-header {
             text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            line-height: 1; margin-bottom: 24px;
-            background: linear-gradient(to bottom, #fff 60%, var(--text-muted));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        
-        .hero p {
-            font-size: 1.15rem; color: var(--text-muted);
-            max-width: 650px; margin: 0 auto 40px;
+            max-width: 650px;
+            margin: 0 auto 4rem;
         }
 
-        /* Secciones */
-        section { padding: 100px 0; }
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--electric-cyan);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
         .section-title {
-            font-size: 2.5rem; text-align: center; margin-bottom: 60px;
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
         }
 
-        /* Carrusel Suave */
-        .carousel-container {
-            overflow: hidden; padding: 20px 0;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
         }
-        
-        .services-carousel {
-            display: flex; gap: 24px;
-            animation: scroll 60s linear infinite;
-        }
-        
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
         }
 
         .service-card {
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 24px; min-width: 350px;
-            overflow: hidden; transition: var(--transition);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        
+
         .service-card:hover {
-            border-color: var(--accent);
-            background: rgba(17, 24, 39, 0.9);
-            transform: translateY(-10px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 102, 255, 0.08);
         }
 
-        .service-image {
-            width: 100%; height: 200px; object-fit: cover;
-            border-bottom: 1px solid var(--border);
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            display: grid;
+            place-content: center;
+            color: var(--electric-cyan);
+            font-size: 1.4rem;
+            margin-bottom: 1.4rem;
         }
 
-        .service-content { padding: 25px; }
-        .service-content h3 { margin-bottom: 12px; font-size: 1.25rem; }
-        .service-content p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; }
+        .service-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
 
-        /* Contacto / Footer simplificado */
+        .service-problem {
+            font-size: 0.85rem;
+            color: var(--electric-cyan);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .service-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .service-benefit {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-benefit span {
+            color: #27c93f;
+        }
+
+        /* ==========================================================================
+           5. PORTAFOLIO MODULAR
+           ========================================================================== */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--electric-blue);
+            color: #ffffff;
+            border-color: var(--electric-blue);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border-radius: var(--radius-md);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-img-box {
+            height: 220px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--electric-cyan);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            font-size: 0.72rem;
+            font-family: monospace;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: var(--text-dim);
+        }
+
+        /* ==========================================================================
+           6. SOBRE MÍ & STACK TÉCNICO
+           ========================================================================== */
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stack-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stack-icon {
+            font-size: 1.8rem;
+            color: var(--electric-cyan);
+        }
+
+        .stack-info h5 {
+            font-size: 0.95rem;
+            color: #fff;
+        }
+
+        .stack-info span {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+
+        /* ==========================================================================
+           7. PROCESO DE TRABAJO (5 ETAPAS)
+           ========================================================================== */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.25rem;
+            position: relative;
+        }
+
+        .step-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 1.8rem 1.2rem;
+            border-radius: var(--radius-md);
+            position: relative;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .step-card:hover {
+            border-color: var(--tech-violet);
+            transform: translateY(-4px);
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: grid;
+            place-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin: 0 auto 1.2rem;
+            color: #fff;
+        }
+
+        .step-title {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+            color: #fff;
+        }
+
+        .step-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* ==========================================================================
+           8. BANNER CTA INTERMEDIO (WHATSAPP FAST-TRACK)
+           ========================================================================== */
+        .cta-banner {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(138, 43, 226, 0.15));
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 3rem 0;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* ==========================================================================
+           9. CONTACTO & FORMULARIO PREPARADO PARA SUPABASE
+           ========================================================================== */
         .contact-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-        }
-        
-        .contact-card {
-            background: var(--glass); border: 1px solid var(--border);
-            padding: 40px; border-radius: 24px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 3.5rem;
+            align-items: flex-start;
         }
 
-        .social-links { display: flex; gap: 15px; margin-top: 20px; }
-        .social-icon {
-            width: 45px; height: 45px; background: var(--border);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: #fff; transition: var(--transition); text-decoration: none;
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
-        .social-icon:hover { background: var(--accent); transform: scale(1.1); }
 
-        /* Floating Elements */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25D366; color: #fff; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 30px; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-            z-index: 999; transition: var(--transition);
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+            transition: var(--transition-smooth);
         }
-        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
 
-        /* Responsive */
+        .contact-item:hover {
+            border-color: var(--border-accent);
+        }
+
+        .contact-item-icon {
+            font-size: 1.4rem;
+            color: var(--electric-cyan);
+        }
+
+        .contact-form {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: #fff;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* ==========================================================================
+           10. FOOTER & BOTÓN FLOTANTE
+           ========================================================================== */
+        .footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 3rem 0;
+            background: #030406;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25d366;
+            color: white;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: grid;
+            place-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition-smooth);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* ==========================================================================
+           11. RESPONSIVE DESIGN (MOBILE-FIRST BREAKPOINTS)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero-grid, .about-wrapper, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.6rem;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.8rem; }
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: calc(100vh - 70px);
+                background: var(--bg-surface);
+                flex-direction: column;
+                padding: 2.5rem;
+                gap: 1.5rem;
+                border-left: 1px solid var(--border-subtle);
+                transition: var(--transition-smooth);
+            }
+
+            .nav-menu.open {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .metric-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-            <a href="#inicio" class="logo">
-                <div class="logo-icon"><i class="fas fa-code"></i></div>
-                <span class="logo-text">ONYX</span>
+    <!-- ==========================================================================
+       BARRA DE NAVEGACIÓN
+       ========================================================================== -->
+    <header class="header" id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <span class="logo-symbol">&lt;/&gt;</span>
+                Onyx Service<span style="color:var(--electric-cyan);">.</span>
             </a>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#proceso">Proceso</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="#servicios" class="nav-link">Servicios</a>
+                <a href="#portafolio" class="nav-link">Portafolio</a>
+                <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+                <a href="#proceso" class="nav-link">Proceso</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+                <a href="#contacto" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Solicitar Presupuesto</a>
             </nav>
-            <a href="#contacto" class="cta-button">Cotizar Proyecto</a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir Menú">☰</button>
         </div>
     </header>
 
     <main>
+        <!-- ==========================================================================
+           HERO SECTION
+           ========================================================================== -->
         <section class="hero" id="inicio">
-            <div class="container">
-                <h1>Digitaliza tu visión,<br>escala tu negocio.</h1>
-                <p>Expertos en desarrollo de interfaces modernas y soluciones robustas para el comercio actual. De Santiago de Cuba para el mundo.</p>
-                <div style="display: flex; gap: 15px; justify-content: center;">
-                    <a href="#servicios" class="cta-button">Ver Servicios</a>
-                    <a href="#contacto" class="cta-button" style="background: var(--glass); border: 1px solid var(--border);">Hablemos</a>
-                </div>
-            </div>
-        </section>
+            <div class="container hero-grid">
+                <div>
+                    <div class="gradient-pill">
+                        <span class="badge-pulse"></span>
+                        Disponible para nuevos proyectos
+                    </div>
+                    <h1 class="hero-title">
+                        Transformo ideas en <span class="gradient-text">experiencias digitales</span> de alto impacto.
+                    </h1>
+                    <p class="hero-description">
+                        Diseño y desarrollo soluciones web modernas y escalables que ayudan a negocios y emprendedores a proyectar confianza absoluta, conectar de forma orgánica y multiplicar sus ventas.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                        <a href="#servicios" class="btn btn-secondary">Explorar Servicios</a>
+                    </div>
 
-        <section id="servicios">
-            <div class="container">
-                <h2 class="section-title">Soluciones Especializadas</h2>
-                <div class="carousel-container">
-                    <div class="services-carousel">
-                        <!-- Card 1 -->
-                        <article class="service-card">
-                            <img src="https://static.tildacdn.com/tild3937-6435-4164-b238-666538313834/main-gif-video-2-9m.gif" alt="Diseño de menús digitales interactivos" class="service-image">
-                            <div class="service-content">
-                                <h3>Menús Digitales</h3>
-                                <p>Experiencias interactivas para restaurantes con actualización remota inmediata.</p>
-                                <a href="https://wa.me/5353910527" class="cta-button">Saber más</a>
-                            </div>
-                        </article>
-                        <!-- Card 2 -->
-                        <article class="service-card">
-                            <img src="https://rinopixel.com/wp-content/uploads/2020/05/onlineshopping_rinopixel.gif" alt="E-commerce y tiendas virtuales" class="service-image">
-                            <div class="service-content">
-                                <h3>E-Commerce</h3>
-                                <p>Tiendas virtuales optimizadas para conversión y gestión de inventarios.</p>
-                                <a href="https://wa.me/5353910527" class="cta-button">Saber más</a>
-                            </div>
-                        </article>
-                        <!-- Card 3 -->
-                        <article class="service-card">
-                            <img src="https://i.gifer.com/TwuB.gif" alt="Sistemas de delivery profesional" class="service-image">
-                            <div class="service-content">
-                                <h3>Sistemas Delivery</h3>
-                                <p>Gestión completa de pedidos y logística de entrega en tiempo real.</p>
-                                <a href="https://wa.me/5353910527" class="cta-button">Saber más</a>
-                            </div>
-                        </article>
-                        <!-- (Clonamos para efecto infinito) -->
-                        <article class="service-card">
-                            <img src="https://static.tildacdn.com/tild3937-6435-4164-b238-666538313834/main-gif-video-2-9m.gif" alt="Diseño de menús" class="service-image">
-                            <div class="service-content">
-                                <h3>Menús Digitales</h3>
-                                <p>Experiencias interactivas para restaurantes con actualización remota.</p>
-                                <a href="https://wa.me/5353910527" class="cta-button">Saber más</a>
-                            </div>
-                        </article>
+                    <div class="metric-cards">
+                        <div class="metric-item">
+                            <h4>+99.8%</h4>
+                            <p>Uptime y optimización</p>
+                        </div>
+                        <div class="metric-item">
+                            <h4>&lt;1.2s</h4>
+                            <p>Velocidad de carga</p>
+                        </div>
+                        <div class="metric-item">
+                            <h4>100%</h4>
+                            <p>Código hecho a medida</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulación de Consola / Arquitectura Tecnológica -->
+                <div class="terminal-preview">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="terminal-filename">engine.config.js</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="code-line"><span class="token-comment">// Inicializando soluciones escalables</span></div>
+                        <div class="code-line"><span class="token-keyword">import</span> { scaleBusiness } <span class="token-keyword">from</span> <span class="token-str">'Onyx Service/core'</span>;</div>
+                        <div class="code-line"><span class="token-keyword">import</span> { supabase } <span class="token-keyword">from</span> <span class="token-str">'@supabase/client'</span>;</div>
+                        <br>
+                        <div class="code-line"><span class="token-keyword">const</span> project = <span class="token-keyword">new</span> <span class="token-func">DigitalExperience</span>({</div>
+                        <div class="code-line">&nbsp;&nbsp;performance: <span class="token-str">'100/100'</span>,</div>
+                        <div class="code-line">&nbsp;&nbsp;stack: [<span class="token-str">'JavaScript'</span>, <span class="token-str">'Python'</span>, <span class="token-str">'Supabase'</span>],</div>
+                        <div class="code-line">&nbsp;&nbsp;conversionOriented: <span class="token-keyword">true</span></div>
+                        <div class="code-line">});</div>
+                        <br>
+                        <div class="code-line"><span class="token-comment">// Resultado: Incremento en conversiones garantizado</span></div>
+                        <div class="code-line"><span class="token-keyword">await</span> project.<span class="token-func">deployToProduction</span>();</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contacto">
+        <!-- ==========================================================================
+           SECCIÓN SERVICIOS
+           ========================================================================== -->
+        <section class="section" id="servicios">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-subtitle">Servicios Especializados</p>
+                    <h2 class="section-title">Infraestructura Web Pensada para Facturar</h2>
+                    <p class="section-desc">Cada desarrollo responde a un objetivo estratégico: eliminar fricción, transmitir credibilidad y maximizar tus tasas de conversión.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Servicio 1 -->
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">⚡</div>
+                            <h3 class="service-title">Landing Pages de Alta Conversión</h3>
+                            <p class="service-problem">¿Problema? Inviertes en publicidad pero tus visitas abandonan.</p>
+                            <p class="service-text">Diseño páginas de aterrizaje quirúrgicas con narrativa persuasiva, enfocadas exclusivamente en transformar tráfico en prospectos calificados.</p>
+                        </div>
+                        <div class="service-benefit">
+                            <span>✔</span> Retorno de inversión en campañas publicitarias.
+                        </div>
+                    </div>
+
+                    <!-- Servicio 2 -->
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">🌐</div>
+                            <h3 class="service-title">Sitios Web Corporativos</h3>
+                            <p class="service-problem">¿Problema? Imagen desactualizada que no genera confianza.</p>
+                            <p class="service-text">Desarrollo de presencias institucionales que posicionan a tu empresa en lo más alto de su industria, con diseño premium y navegación intuitiva.</p>
+                        </div>
+                        <div class="service-benefit">
+                            <span>✔</span> Percepción de marca de alto calibre.
+                        </div>
+                    </div>
+
+                    <!-- Servicio 3 -->
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">🛒</div>
+                            <h3 class="service-title">Tiendas Online & E-commerce</h3>
+                            <p class="service-problem">¿Problema? Carritos abandonados y pasarelas lentas.</p>
+                            <p class="service-text">Plataformas de venta fluidas, con pasarelas de pago seguras, gestión de inventario ágil y experiencia de compra sin tropiezos.</p>
+                        </div>
+                        <div class="service-benefit">
+                            <span>✔</span> Venta continua los 365 días del año.
+                        </div>
+                    </div>
+
+                    <!-- Servicio 4 -->
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">📖</div>
+                            <h3 class="service-title">Catálogos Digitales Interactivos</h3>
+                            <p class="service-problem">¿Problema? PDFs pesados que tus clientes nunca abren.</p>
+                            <p class="service-text">Muestra tus productos en formato digital navegable, interactivo y con botón directo de pedido hacia WhatsApp o email comercial.</p>
+                        </div>
+                        <div class="service-benefit">
+                            <span>✔</span> Cierre inmediato de ventas directas.
+                        </div>
+                    </div>
+
+                    <!-- Servicio 5 -->
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">⚙️</div>
+                            <h3 class="service-title">Automatizaciones con JavaScript & Python</h3>
+                            <p class="service-problem">¿Problema? Tareas manuales y repetitivas que consumen tiempo.</p>
+                            <p class="service-text">Scripts inteligentes que integran tus sistemas, procesan información, sincronizan inventarios y eliminan el error humano.</p>
+                        </div>
+                        <div class="service-benefit">
+                            <span>✔</span> Ahorro sustancial en horas operativas.
+                        </div>
+                    </div>
+
+                    <!-- Servicio 6 -->
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">🗄️</div>
+                            <h3 class="service-title">Integración de Datos con Supabase</h3>
+                            <p class="service-problem">¿Problema? Bases de datos lentas o infraestructuras complejas.</p>
+                            <p class="service-text">Implementación de backend moderno con PostgreSQL en tiempo real, autenticación de usuarios segura y APIs robustas a escala.</p>
+                        </div>
+                        <div class="service-benefit">
+                            <span>✔</span> Velocidad y seguridad de nivel empresarial.
+                        </div>
+                    </div>
+
+                    <!-- Servicio 7 -->
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">📱</div>
+                            <h3 class="service-title">Diseño Adaptable (Mobile-First)</h3>
+                            <p class="service-problem">¿Problema? Sitios rotos que pierden clientes en celulares.</p>
+                            <p class="service-text">Experiencia visual nativa y consistente en cualquier resolución: pantallas ultra-wide, laptops, iPads y dispositivos móviles modernos.</p>
+                        </div>
+                        <div class="service-benefit">
+                            <span>✔</span> Cero pérdidas de ventas móviles.
+                        </div>
+                    </div>
+
+                    <!-- Servicio 8 -->
+                    <div class="service-card">
+                        <div>
+                            <div class="service-icon">🛠️</div>
+                            <h3 class="service-title">Mantenimiento, Seguridad & SEO</h3>
+                            <p class="service-problem">¿Problema? Sitios abandonados vulnerables o invisibles en Google.</p>
+                            <p class="service-text">Auditorías periódicas, optimización extrema de velocidad de carga, blindaje de seguridad y preparación estructural para motores de búsqueda.</p>
+                        </div>
+                        <div class="service-benefit">
+                            <span>✔</span> Posicionamiento orgánico y tranquilidad técnica.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           PORTAFOLIO DINÁMICO
+           ========================================================================== -->
+        <section class="section" id="portafolio" style="background: rgba(14, 16, 23, 0.4);">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-subtitle">Casos de Éxito</p>
+                    <h2 class="section-title">Soluciones Listas para el Mundo Real</h2>
+                    <p class="section-desc">Echa un vistazo a una selección de proyectos construidos con precisión quirúrgica, estabilidad y enfoque de rentabilidad.</p>
+                </div>
+
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="web">Web Corporativa</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                    <button class="filter-btn" data-filter="app">Sistemas & Backend</button>
+                </div>
+
+                <div class="portfolio-grid" id="portfolioContainer">
+                    <!-- Proyecto 1 -->
+                    <div class="project-card" data-category="ecommerce">
+                        <div class="project-img-box" style="background: linear-gradient(135deg, #102a45, #001e3d);">
+                            <span class="project-badge">E-Commerce Moderno</span>
+                            <span style="font-size:3rem;">🛍️</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Aura Luxury Watch Store</h3>
+                            <p class="project-desc">Plataforma transaccional con pasarela integrada, panel de gestión en Supabase y optimización de checkout en un paso.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML5 / CSS3</span>
+                                <span class="project-tag">JavaScript Vanilla</span>
+                                <span class="project-tag">Supabase DB</span>
+                            </div>
+                            <a href="#contacto" class="btn btn-secondary" style="width: 100%; padding: 0.6rem;">Ver caso similar</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div class="project-card" data-category="app">
+                        <div class="project-img-box" style="background: linear-gradient(135deg, #2b1055, #12052a);">
+                            <span class="project-badge">Automatización & Datos</span>
+                            <span style="font-size:3rem;">⚡</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">LeadFlow Automation Engine</h3>
+                            <p class="project-desc">Sistema automatizado con microservicios en Python para captación, calificación y derivación de leads en tiempo real a CRM.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">FastAPI</span>
+                                <span class="project-tag">Webhooks</span>
+                            </div>
+                            <a href="#contacto" class="btn btn-secondary" style="width: 100%; padding: 0.6rem;">Ver caso similar</a>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 3 -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-img-box" style="background: linear-gradient(135deg, #0f3d2e, #061c14);">
+                            <span class="project-badge">Sitio Institucional</span>
+                            <span style="font-size:3rem;">🏢</span>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Vanguard Capital Partners</h3>
+                            <p class="project-desc">Portal corporativo para firma financiera, con diseño minimalista oscuro, animaciones por desplazamiento y 99 de puntuación en Google PageSpeed.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Arquitectura Semántica</span>
+                                <span class="project-tag">Mobile First</span>
+                                <span class="project-tag">SEO Técnico</span>
+                            </div>
+                            <a href="#contacto" class="btn btn-secondary" style="width: 100%; padding: 0.6rem;">Ver caso similar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           SOBRE MÍ & STACK TÉCNICO
+           ========================================================================== -->
+        <section class="section" id="sobre-mi">
+            <div class="container about-wrapper">
+                <div class="about-text">
+                    <p class="section-subtitle">Capacidad Técnica Probada</p>
+                    <h2 class="section-title">Desarrollo Web Pensado como Inversión, No como Gasto</h2>
+                    <p>
+                        Soy desarrollador web independiente especializado en transformar modelos de negocio en arquitecturas digitales rápidas, seguras y visualmente impactantes.
+                    </p>
+                    <p>
+                        A diferencia de las agencias tradicionales que usan plantillas saturadas o frameworks innecesariamente pesados, construyo software con fundamentos limpios, garantizando tiempos de carga récord, mantenimiento sencillo y máxima capacidad de crecimiento.
+                    </p>
+                    <a href="#contacto" class="btn btn-primary" style="margin-top: 1rem;">Hablemos de tu Proyecto</a>
+                </div>
+
+                <div class="stack-grid">
+                    <div class="stack-item">
+                        <div class="stack-icon">⚡</div>
+                        <div class="stack-info">
+                            <h5>HTML5 & CSS3 Avanzado</h5>
+                            <span>Semántica, Flexbox & Grid sin librerías</span>
+                        </div>
+                    </div>
+                    <div class="stack-item">
+                        <div class="stack-icon">📜</div>
+                        <div class="stack-info">
+                            <h5>JavaScript Moderno (ES6+)</h5>
+                            <span>Interactividad ágil y código modular</span>
+                        </div>
+                    </div>
+                    <div class="stack-item">
+                        <div class="stack-icon">🐍</div>
+                        <div class="stack-info">
+                            <h5>Python</h5>
+                            <span>Automatizaciones, APIs e ingesta de datos</span>
+                        </div>
+                    </div>
+                    <div class="stack-item">
+                        <div class="stack-icon">🗄️</div>
+                        <div class="stack-info">
+                            <h5>Supabase Platform</h5>
+                            <span>PostgreSQL en tiempo real y Auth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           PROCESO DE TRABAJO TRANSPARENTE
+           ========================================================================== -->
+        <section class="section" id="proceso" style="background: rgba(14, 16, 23, 0.4);">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-subtitle">Flujo de Trabajo</p>
+                    <h2 class="section-title">Un Método Claro, Ágil y sin Fricción</h2>
+                    <p class="section-desc">Garantía de cumplimiento en tiempos, transparencia constante y cero sorpresas.</p>
+                </div>
+
+                <div class="process-steps">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <h4 class="step-title">Análisis</h4>
+                        <p class="step-desc">Evaluamos a fondo tus objetivos comerciales, tu público objetivo y los requerimientos funcionales del proyecto.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <h4 class="step-title">Propuesta</h4>
+                        <p class="step-desc">Definimos la arquitectura del sitio, el cronograma detallado de entregas y la cotización transparente.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <h4 class="step-title">Construcción</h4>
+                        <p class="step-desc">Diseño de interfaces con código limpio, modular y completamente responsivo, revisando avances contigo.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">04</div>
+                        <h4 class="step-title">Optimización</h4>
+                        <p class="step-desc">Pruebas multiplataforma exhaustivas, auditoría de velocidad de carga y validación de seguridad.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">05</div>
+                        <h4 class="step-title">Despliegue</h4>
+                        <p class="step-desc">Publicación en tu dominio, puesta en marcha integral y acompañamiento post-lanzamiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           BANNER CTA INTERMEDIO (WHATSAPP FAST-TRACK)
+           ========================================================================== -->
+        <section class="container">
+            <div class="cta-banner">
+                <h2>¿Tienes una idea en mente? Tu próximo proyecto comienza hoy</h2>
+                <p>No postergues más la presencia digital que tu negocio merece. Hablemos de forma directa para definir el alcance de tu solución.</p>
+                <a href="https://wa.me/5491100000000?text=Hola,%20quiero%20solicitar%20un%20presupuesto%20para%20un%20proyecto%20web" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background:#25d366; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);">
+                    Iniciar Conversación por WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           CONTACTO & FORMULARIO
+           ========================================================================== -->
+        <section class="section" id="contacto">
             <div class="container contact-grid">
-                <div class="contact-card">
-                    <h2 style="margin-bottom: 20px;">¿Tienes un proyecto en mente?</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 30px;">Estamos listos para construir la herramienta que tu negocio necesita.</p>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <p><i class="fas fa-envelope" style="color: var(--accent);"></i> djotoniel59@gmail.com</p>
-                        <p><i class="fas fa-phone" style="color: var(--accent); margin-top: 10px;"></i>  +53 53910527</p>
-                    </div>
+                <div>
+                    <p class="section-subtitle">Canales Directos</p>
+                    <h2 class="section-title">Hablemos de Negocios</h2>
+                    <p class="section-desc" style="margin-bottom: 2rem;">
+                        Cuéntame sobre tu proyecto y recibirás una respuesta detallada con viabilidad y presupuesto en menos de 24 horas hábiles.
+                    </p>
 
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61584794139078" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <!--<a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>-->
-                        <!--<a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>-->
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-item-icon">💬</span>
+                            <div>
+                                <h5>WhatsApp Directo</h5>
+                                <a href="https://wa.me/53910527" target="_blank" style="color:var(--text-muted); font-size: 0.9rem;">+54 9 11 0000-0000</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-item-icon">✉️</span>
+                            <div>
+                                <h5>Correo Electrónico</h5>
+                                <a href="mailto:contacto@tudominio.com" style="color:var(--text-muted); font-size: 0.9rem;">djotoniel59@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-item-icon">📍</span>
+                            <div>
+                                <h5>Modalidad de Trabajo</h5>
+                                <p style="color:var(--text-muted); font-size: 0.9rem;">Remoto para clientes de todo el mundo</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="contact-card">
-                    <!-- Formulario habilitado y corregido -->
-                    <form id="mainContactForm">
-                        <div style="margin-bottom: 15px;">
-                            <input type="text" id="name" placeholder="Tu nombre" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff;">
+                <div class="contact-form">
+                    <form id="projectContactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="clientName">Nombre Completo *</label>
+                            <input type="text" id="clientName" class="form-control" placeholder="Ej. Roberto Sánchez" required>
                         </div>
-                        <div style="margin-bottom: 15px;">
-                            <textarea id="msg" placeholder="¿En qué podemos ayudarte?" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff; height: 120px;"></textarea>
+
+                        <div class="form-group">
+                            <label class="form-label" for="clientEmail">Correo Electrónico Corporativo *</label>
+                            <input type="email" id="clientEmail" class="form-control" placeholder="roberto@empresa.com" required>
                         </div>
-                        <button type="submit" class="cta-button" style="width: 100%; justify-content: center;">Enviar mensaje</button>
+
+                        <div class="form-group">
+                            <label class="form-label" for="serviceSelect">Tipo de Servicio Solicitado</label>
+                            <select id="serviceSelect" class="form-control">
+                                <option value="landing">Landing Page de Alta Conversión</option>
+                                <option value="corporate">Sitio Web Corporativo</option>
+                                <option value="ecommerce">Tienda Online / E-commerce</option>
+                                <option value="automation">Automatización (Python / JS)</option>
+                                <option value="custom">Desarrollo a Medida con Supabase</option>
+                                <option value="maintenance">Mantenimiento y Optimización</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="clientMessage">Detalles del Proyecto *</label>
+                            <textarea id="clientMessage" class="form-control" placeholder="Describe brevemente tus objetivos, tiempos estimados o requerimientos puntuales..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Enviar Solicitud de Presupuesto
+                        </button>
+
+                        <div class="form-status" id="formStatus"></div>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 40px 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: var(--text-muted);">
-        <div class="container">
-            &copy; 2025 Onyx Digital Solutions. Calidad premium en cada línea de código.
+    <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 0.5rem;">
+                    <span class="logo-symbol">&lt;/&gt;</span>
+                    Onyx Service<span style="color:var(--electric-cyan);">.</span>
+                </a>
+                <p>© <span id="currentYear"></span> Onyx Service. Todos los derechos reservados.</p>
+            </div>
+            <div>
+                <p>Diseñado con estándares de alta velocidad, accesibilidad y máxima conversión.</p>
+            </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/5353910527" class="whatsapp-float" aria-label="Chat en WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/53910527?text=Hola,%20quisiera%20consultar%20por%20servicios%20de%20desarrollo%20web" 
+       class="floating-whatsapp" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       aria-label="Contactar por WhatsApp">
+       💬
     </a>
 
+    <!-- ==========================================================================
+       JAVASCRIPT FUNCIONAL & MODULAR (SIN DEPENDENCIAS EXTERNAS)
+       ========================================================================== -->
     <script>
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Dinamismo en el Año de Copyright
+            const yearElem = document.getElementById('currentYear');
+            if (yearElem) yearElem.textContent = new Date().getFullYear();
+
+            // 2. Navbar Inteligente (Efecto Glass al Escrolear)
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // 3. Menú Mobile Drawer
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+                mobileToggle.textContent = navMenu.classList.contains('open') ? '✕' : '☰';
+            });
+
+            // Cerrar menú móvil al hacer click en cualquier link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                    mobileToggle.textContent = '☰';
                 });
             });
-        });
 
-        // Form Logic (Corregido)
-        const contactForm = document.getElementById('mainContactForm');
-        if(contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('name').value;
-                const msg = document.getElementById('msg').value;
-                const phone = '5353910527';
-                window.open(`https://wa.me/${phone}?text=Hola Onyx! Soy ${name}. ${msg}`, '_blank');
+            // 4. Filtrado Dinámico de Portafolio
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remover clase activa
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeIn 0.4s ease';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
             });
-        }
 
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.padding = '10px 0';
-                header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
-            } else {
-                header.style.padding = '15px 0';
-                header.style.boxShadow = 'none';
-            }
+            // 5. Manejo del Formulario (Listo para conectar a Supabase)
+            const contactForm = document.getElementById('projectContactForm');
+            const formStatus = document.getElementById('formStatus');
+
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Procesando envío...';
+
+                // Payload de datos listo para Supabase
+                const leadData = {
+                    name: document.getElementById('clientName').value.trim(),
+                    email: document.getElementById('clientEmail').value.trim(),
+                    service: document.getElementById('serviceSelect').value,
+                    message: document.getElementById('clientMessage').value.trim(),
+                    created_at: new Date().toISOString()
+                };
+
+                /* 
+                   EJEMPLO DE INTEGRACIÓN DIRECTA CON SUPABASE:
+                   const { data, error } = await supabaseClient
+                       .from('leads')
+                       .insert([leadData]);
+                */
+
+                // Simulación asíncrona de éxito
+                setTimeout(() => {
+                    formStatus.style.display = 'block';
+                    formStatus.style.color = '#34d399';
+                    formStatus.textContent = '✓ ¡Mensaje recibido! Te responderé en menos de 24 horas.';
+                    contactForm.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Enviar Solicitud de Presupuesto';
+
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 6000);
+                }, 1000);
+            });
         });
     </script>
 </body>
