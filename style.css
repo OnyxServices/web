@@ -1,0 +1,17 @@
+/* ==========================================================================
+   RESET & UTILIDADES PERSONALIZADAS
+   ========================================================================== */
+
+[x-cloak] { 
+    display: none !important; 
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #ffffff 30%, #00f0ff 75%, #8A2BE2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-border {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.3), rgba(138, 43, 226, 0.3));
+}
